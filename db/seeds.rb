@@ -14,7 +14,7 @@
   )
 end
  
-["Nature", "Beach", "Art", "Food", "Travel", "Fun", "Ratchet", "Backpacker", "Hostel", "Asia", "South America", "Europe", "City"].each do |tag_name|
+["Nature", "Beach", "Asia", "City", "South America", "Europe", "Art", "Food", "Travel", "Fun", "Ratchet", "Backpacker", "Hostel"].each do |tag_name|
   Tag.create(name: tag_name)
 end
  
@@ -33,7 +33,7 @@ Comment.create(
 )
 
 PictureTag.create(
-	name: "blessed",
+	name: "Nature",
 	picture_id: Picture.first.id,
 	tag_id: Tag.first.id
 )
@@ -53,9 +53,15 @@ Comment.create(
 )
 
 PictureTag.create(
-	name: "tiredaf",
+	name: "Nature",
 	picture_id: Picture.second.id,
-	tag_id: Tag.second.id
+	tag_id: Tag.first.id
+)
+
+PictureTag.create(
+  name: "Asia",
+  picture_id: Picture.second.id,
+  tag_id: Tag.third.id
 )
 
 url3 = "https://photos.google.com/album/AF1QipMK7TcP-dqr3_r1yLl4Wnd-OSoPP8hQN1pNO3Rh/photo/AF1QipOgoEPR2f4gd9KXtlGeYV3jXSfKdCcn2yPUqyOt"
@@ -63,19 +69,47 @@ url3 = "https://photos.google.com/album/AF1QipMK7TcP-dqr3_r1yLl4Wnd-OSoPP8hQN1pN
 Picture.create(
   img_url: url3,
   title: "City life!",
-  user_id: User.third.id
+  user_id: User.first.id
  )
 
 Comment.create(
   content: "Hustle and bustle of a metropolitan area - Delhi.",
   picture_id: Picture.third.id,
-  user_id: User.third.id
+  user_id: User.first.id
 )
 
 PictureTag.create(
-  name: "tiredaf",
+  name: "City",
   picture_id: Picture.third.id,
+  tag_id: Tag.fourth.id
+)
+
+url4 = "https://photos.google.com/album/AF1QipMK7TcP-dqr3_r1yLl4Wnd-OSoPP8hQN1pNO3Rh/photo/AF1QipNXD367zZt5a_E3HDggAu8oclP2O1rZ4fOFnIEU"
+ 
+Picture.create(
+  img_url: url4,
+  title: "Architecture!",
+  user_id: User.fourth.id
+ )
+
+Comment.create(
+  content: "Tombs.",
+  picture_id: Picture.fourth.id,
+  user_id: User.fourth.id
+)
+
+PictureTag.create(
+  name: "Asia",
+  picture_id: Picture.fourth.id,
   tag_id: Tag.third.id
 )
+
+url5 = "https://photos.google.com/album/AF1QipMK7TcP-dqr3_r1yLl4Wnd-OSoPP8hQN1pNO3Rh/photo/AF1QipP5xWKNLBvhcbhNY64-Vi2y3DhMTGnmzkxqO6hm"
+ 
+Picture.create(
+  img_url: url5,
+  title: "Among the Clouds",
+  user_id: User.fourth.id
+ )
 
 
