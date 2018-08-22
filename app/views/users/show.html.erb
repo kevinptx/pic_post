@@ -1,1 +1,10 @@
-show.html.erb
+<h1>Backpacker Name: <%=link_to @user.username, edit_user_path(@user)%></h1>
+
+<ul>
+
+	<p>Email: <%= @user.email %></p>
+	<% @user.pictures.each do |picture| %>
+		<img src= <%= picture.img_url %> width="500" height="350" ><br />
+	<% end %>
+
+</ul>

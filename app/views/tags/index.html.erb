@@ -13,12 +13,12 @@
 </head>
 
 <body>
- <h1>Backpacker List</h1>
+ <h1>Tags List</h1>
 
- <h2>Names</h2>
+ <h2>Hottest Tagz</h2>
 <ul>
-<% @users.each do |user| %>
-<%= link_to user.username, user %><br />
+<% @tags.each do |tag| %>
+<%= link_to tag.name, tag %><br />
 <% end %>
 </ul>
 
