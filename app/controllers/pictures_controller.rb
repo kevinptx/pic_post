@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+
   before_action :define_current_picture, only: [:new, :edit, :show, :update]
 
   def index
@@ -37,4 +38,5 @@ class PicturesController < ApplicationController
   def picture_params
     params.require(:picture).permit(:img_url, :title, :user_id, tag_ids: [], tags_attributes: [:name])
   end
+
 end
