@@ -6,76 +6,135 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-[1,2,3,4,5,6,7,8,9].each do |num|
-  User.create(
-    username:"user#{num}",
-    password_digest: BCrypt::Password.create("test123"),
-    email: "user#{num}@example.com",
-  )
-end
- 
-["Nature", "Beach", "Art", "Food", "Travel", "Fun", "Ratchet", "Backpacker", "Hostel", "Asia", "South America", "Europe", "City"].each do |tag_name|
+#Create Users
+User.create(username: "sarahg", password_digest: BCrypt::Password.create("test123"), email: "sarahG@hotmail.com")
+User.create(username: "maninj", password_digest: BCrypt::Password.create("test123"), email: "maninJ@gmail.com")
+User.create(username: "katemc", password_digest: BCrypt::Password.create("test123"), email: "kateMc@yahoo.com")
+User.create(username: "arniea", password_digest: BCrypt::Password.create("test123"), email: "arnieA@basicmail.com")
+User.create(username: "alexh", password_digest: BCrypt::Password.create("test123"), email: "alexH@hotmail.com")
+User.create(username: "nicolec", password_digest: BCrypt::Password.create("test123"), email: "nicoleC@aol.com")
+
+
+#Create Tags
+["Nature", "Asia", "Village", "South America", "Europe", "Beach", "Art", "Food", "Travel", "Fun", "Ratchet", "Backpacker", "Hostel", "Street Food"].each do |tag_name|
   Tag.create(name: tag_name)
 end
- 
-url1 = "https://photos.google.com/album/AF1QipMK7TcP-dqr3_r1yLl4Wnd-OSoPP8hQN1pNO3Rh/photo/AF1QipOW37mucaYemhiw-_Gdadx2j9XqZ9po-OBMvsxd"
+
+#Create Pictures / Comments / Picture Tags
+url1 = "https://arniestoodling.files.wordpress.com/2017/08/img_4883.jpg"
  
 Picture.create(
   img_url: url1,
-  title: "Country life!",
+  title: "Slovenian Country-Side Home",
   user_id: User.first.id
  )
 
 Comment.create(
-  content: "Relaxation, away from the basic people - Slovenian country-side.",
+  content: "Best vacay spot eveerrrrr!",
   picture_id: Picture.first.id,
   user_id: User.first.id
 )
 
+Comment.create(
+  content: "Kinda meh.",
+  picture_id: Picture.first.id,
+  user_id: User.second.id
+)
+
 PictureTag.create(
-	name: "blessed",
+	name: "Nature",
 	picture_id: Picture.first.id,
 	tag_id: Tag.first.id
 )
 
-url2 = "https://photos.google.com/album/AF1QipMK7TcP-dqr3_r1yLl4Wnd-OSoPP8hQN1pNO3Rh/photo/AF1QipN09ceCFNchYcYNrrpSX1ZkZHVbYaOlH0CHzxBS"
+url2 = "https://arniestoodling.files.wordpress.com/2017/07/img_8507.jpg?w=2000&h=1200&crop=1"
  
 Picture.create(
   img_url: url2,
-  title: "Mountain life!",
+  title: "Rock climbing heaven - Cluj, Romania",
   user_id: User.second.id
  )
 
 Comment.create(
-  content: "When you want a physical challenge AND to be away from the basic people - Annapurna.",
+  content: "I broke my arm here last week. Not a good spot.",
   picture_id: Picture.second.id,
   user_id: User.second.id
 )
 
 PictureTag.create(
-	name: "tiredaf",
+	name: "Nature",
 	picture_id: Picture.second.id,
-	tag_id: Tag.second.id
+	tag_id: Tag.first.id
 )
 
-url3 = "https://photos.google.com/album/AF1QipMK7TcP-dqr3_r1yLl4Wnd-OSoPP8hQN1pNO3Rh/photo/AF1QipOgoEPR2f4gd9KXtlGeYV3jXSfKdCcn2yPUqyOt"
+url3 = "https://arniestoodling.files.wordpress.com/2017/05/img_3338.jpg?w=2000&h=1200&crop=1"
  
 Picture.create(
   img_url: url3,
-  title: "City life!",
-  user_id: User.third.id
+  title: "Small town charm - Puskhar, India",
+  user_id: User.first.id
  )
 
 Comment.create(
-  content: "Hustle and bustle of a metropolitan area - Delhi.",
+  content: "Street food heaven!",
   picture_id: Picture.third.id,
-  user_id: User.third.id
+  user_id: User.first.id
 )
 
 PictureTag.create(
-  name: "tiredaf",
+  name: "Village",
   picture_id: Picture.third.id,
   tag_id: Tag.third.id
 )
+
+PictureTag.create(
+  name: "Asia",
+  picture_id: Picture.third.id,
+  tag_id: Tag.second.id
+)
+
+url4 = "https://arniestoodling.files.wordpress.com/2017/10/cropped-img_3977.jpg"
+ 
+Picture.create(
+  img_url: url4,
+  title: "Place of meditation - Delhi, India",
+  user_id: User.fourth.id
+ )
+
+Comment.create(
+  content: "Not sure if foreigner entrance fee is worth the money.",
+  picture_id: Picture.fourth.id,
+  user_id: User.fourth.id
+)
+
+PictureTag.create(
+  name: "Asia",
+  picture_id: Picture.fourth.id,
+  tag_id: Tag.second.id
+)
+
+url5 = "https://arniestoodling.files.wordpress.com/2016/12/img_2914.jpg"
+ 
+Picture.create(
+  img_url: url5,
+  title: "Backpack in the Patagonian Wilderness",
+  user_id: User.fourth.id
+ )
+
+url6 = "https://arniestoodling.files.wordpress.com/2017/05/img_1614.jpg?w=2000&h=1200&crop=1"
+ 
+Picture.create(
+  img_url: url6,
+  title: "Backwater Exploration - Can Tho, Vietnam",
+  user_id: User.second.id
+ )
+
+url7 = "https://arniestoodling.files.wordpress.com/2016/12/971c6fe7-ba44-47bc-8ff9-af4f89fb5dc3.jpg"
+ 
+Picture.create(
+  img_url: url7,
+  title: "Salt Flat Safari - Uyuni, Bolivia",
+  user_id: User.third.id
+ )
 
 
