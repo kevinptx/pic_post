@@ -32,7 +32,11 @@ class PicturesController < ApplicationController
   private
 
   def define_current_picture
-    @picture = Picture.find(params[:id])
+    if(params[:id])
+      @picture = Picture.find(params[:id])
+    else
+      @picture = Picture.new
+    end
   end
 
   def picture_params

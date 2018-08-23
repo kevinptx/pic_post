@@ -11,9 +11,11 @@
     </div>
   <% end %>
 
+  <% if picture.img_url %>
   <div class="field">
       <img src= <%= picture.img_url %> width="167" height="117">
   </div>
+  <% end  %>
 
   <div class="field">
     <%= form.label :img_url %>

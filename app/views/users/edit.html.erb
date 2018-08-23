@@ -1,3 +1,7 @@
-<h1>Edit Personal Information</h1>
-
-<%= render 'form' %>
+<%= form_for @user do |f| %>
+  Username: <%= f.text_field :username %><br />
+  Email: <%= f.text_field :email %><br />
+  Password: <%= f.password_field :password %><br />
+  <%= f.submit %>
+<% end %>
+<%= link_to "Back", users_path %>

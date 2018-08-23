@@ -4,8 +4,7 @@ Rails.application.routes.draw do
 	resources :picture_tags
 	resources :pictures
 	resources :comments
-
-  	resources :users, only: [:index, :new, :create]
+	resources :users
 
 	resources :sessions, only: [:create]
 
