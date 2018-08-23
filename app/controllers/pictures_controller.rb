@@ -26,7 +26,7 @@ class PicturesController < ApplicationController
   end
 
   def update
-    @picture.update(picture_params)
+    @picture = Picture.update(picture_params)
     redirect_to picture_path(@picture)
   end
 

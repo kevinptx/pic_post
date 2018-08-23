@@ -32,13 +32,15 @@
   </div>
 
   <div>
-    <p><%= f.fields_for :tags, picture.tags.build do |tags_fields| %>
+    <p>Add Tag: <%= form.fields_for :tags, picture.tags.build do |tags_fields| %>
     <%= tags_fields.text_field :name %>
     <% end %></p>
   </div>
 
   <div>
-    <p>Tags: <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name%></p>
+    <p>Add Comment: <%= form.fields_for :comments, picture.comments.build do |comments_fields| %>
+    <%= comments_fields.text_field :content %>
+    <% end %></p>
   </div>
 
   <div class="actions">
