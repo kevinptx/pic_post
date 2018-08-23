@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :define_current_picture, only: [:new, :edit, :show, :update]
+  before_action :define_current_picture, only: [:new, :edit, :show, :update, :destroy]
 
   def index
     @pictures = Picture.all
@@ -12,14 +12,10 @@ class PicturesController < ApplicationController
   end
 
   def create
-    picture = Picture.create(picture_params)
-    redirect_to picture_path(picture)
-    # if @picture.valid?
-    #   @picture.save
-    #   redirect_to @picture
-    # else
-    #   redirect_to new_picture_path
-    # end
+    @picture = Picture.new(picture_params)
+    @picture.user = current_user
+    @picture.save
+    redirect_to @picture
   end
 
   #this is the get
@@ -30,6 +26,13 @@ class PicturesController < ApplicationController
   def update
     @picture.update(picture_params)
     redirect_to picture_path(@picture)
+  end
+
+  def destroy
+    @picture.destroy
+    respond_to do |format|
+      format.html { redirect_to pictures_url, notice: "Picture was successfully destroyed." }
+    end
   end
 
   private
@@ -43,6 +46,6 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:img_url, :title, :user_id, tag_ids: [], tags_attributes: [ [:name] ], comment_ids: [], comments_attributes: [:content])
+    params.require(:picture).permit(:img_url, :title, :user_id, tag_ids: [], tags_attributes: [[:name]], comment_ids: [], comments_attributes: [:content])
   end
 end
