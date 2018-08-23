@@ -141,3 +141,19 @@ Picture.create(
   title: "Salt Flat Safari - Uyuni, Bolivia",
   user_id: User.third.id,
 )
+
+url8 = "https://arniestoodling.files.wordpress.com/2018/08/dsc_1057.jpg?w=525"
+
+Picture.create(
+  img_url: url8,
+  title: "Jump on it, desert livin! - Wadi Rum, Jordan",
+  user_id: User.fifth.id,
+)
+
+url9 = "https://arniestoodling.files.wordpress.com/2018/08/dsc_0458.jpg?w=525"
+
+Picture.create(
+  img_url: url9,
+  title: "Fern Gulley meets Grand Canyon - Zion, Utah",
+  user_id: User.first.id,
+)
