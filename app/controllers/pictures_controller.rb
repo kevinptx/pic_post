@@ -12,13 +12,14 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(picture_params)
-    if @picture.valid?
-      @picture.save
-      redirect_to @picture
-    else
-      redirect_to new_picture_path
-    end
+    picture = Picture.create(picture_params)
+    redirect_to picture_path(picture)
+    # if @picture.valid?
+    #   @picture.save
+    #   redirect_to @picture
+    # else
+    #   redirect_to new_picture_path
+    # end
   end
 
   #this is the get

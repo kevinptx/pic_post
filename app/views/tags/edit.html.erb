@@ -1,0 +1,13 @@
+<h1>Edit This Photo's Tags</h1>
+
+<%= form_with model: tag do |form| %>
+	<div>
+	    <p>Existing Tags: <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name%></p>
+	</div>
+
+	<div>
+	  <p>Add Tag: <%= form.fields_for :tags, picture.tags.build do |tags_fields| %>
+	    <%= tags_fields.text_field :name %>
+	  <% end %></p>
+	</div>
+<% end %>

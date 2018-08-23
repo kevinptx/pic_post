@@ -2,8 +2,13 @@ Rails.application.routes.draw do
 	
 	resources :tags
 	resources :picture_tags
-	resources :pictures
-	resources :comments
+	resources :pictures do
+		resources :comments
+	end
+
+	post 'recipes/:id', to: 'comments#create'
+	
+	resources :comments 
 	resources :users
 
 	resources :sessions, only: [:create]

@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-<!--   <strong>Image: </strong> -->
-  <img src= <%= @picture.img_url %> width="500" height="350" ><br />
+  <strong>Title:</strong>
+  <%= @picture.title %>
 </p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @picture.title %>
+<!--   <strong>Image: </strong> -->
+  <img src= <%= @picture.img_url %> width="500" height="350" ><br />
 </p>
 
 <p>
@@ -24,12 +24,13 @@
   <% end %>
 </p>
 
+<%= render template: "comments/new.html.erb", :picture => @picture %>
+
 <p>
   <strong>Backpacker Contact Info:</strong>
   <%= @picture.user.username %> |
   <%= @picture.user.email %>
 </p>
-
 
 <%= link_to 'Edit', edit_picture_path(@picture) %> |
 <%= link_to 'Back', pictures_path %>

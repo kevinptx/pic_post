@@ -1,4 +1,4 @@
-<h1>Welcome Back!</h1>
+<h1>Welcome Backpackers!</h1>
 <h2>Sign Into Your Account</h2>
 
 <%= flash[:error] %>
@@ -8,3 +8,5 @@
 	<%= f.password_field :password, placeholder: 'password' %>
 	<%= f.submit %>
 <% end %> 
+
+<h4>Not a member already? <%= link_to "Signup!", signup_path %></h4>

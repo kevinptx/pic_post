@@ -31,6 +31,10 @@ class TagsController < ApplicationController
 		@tag.update
 	end
 
+	def destroy
+		@tag.destroy
+	end
+
 	private
 
 	def tag_params
