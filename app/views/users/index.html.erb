@@ -1,12 +1,19 @@
-<h1>Backpacker Name: <%= @user.username %></h1>
+<h1>Welcome Home, <%= @user.username %>.</h1>
 
 <ul>
 
-	<% @user.pictures.each do |picture| %>
-		<img src= <%= picture.img_url %> width="500" height="350" ><br />
+	<p><%= link_to "Pic Post Feed", pictures_path %> (see what the community is up to)</p>
+	<p><%= link_to "Get to Postin!", new_picture_path %></p>
+	
+	<% if @user.pictures %>
+		<% @user.pictures.each do |picture| %>
+			<img src= <%= picture.img_url %> width="500" height="350" ><br />
+		<% end %>
+	<% else %>
+		<%= "No pictures on your profile. Get movin!" %>
 	<% end %>
 
-	<p>Contact Me! <%= @user.email %></p><br />
-	<p><%link_to "Main Page", pictures_path %></p>
+	<%= link_to "Something Change? Update Info.", edit_user_path(@user) %><br />
+
 
 </ul>

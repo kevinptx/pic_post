@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to users_path
     else
-      flash[:error] = "YOU ARE NOT ALLOWED."
+      flash[:error] = "Please try again."
       redirect_to login_path
     end
   end

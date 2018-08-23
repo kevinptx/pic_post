@@ -1,15 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Image: </strong>
+<!--   <strong>Image: </strong> -->
   <img src= <%= @picture.img_url %> width="500" height="350" ><br />
-</p>
-
-<p>
-  <strong>Tags:</strong>
-  <% @picture.tags.map do |tag| %>
-  <%= tag.name %>
-  <% end %>
 </p>
 
 <p>
@@ -18,8 +11,23 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @picture.user.username %>
+  <strong>Tags:</strong>
+  <% @picture.tags.map do |tag| %>
+  <td><%= tag.name %></td>
+  <% end %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <% @picture.comments.map do |comment| %>
+  <li>"<%= comment.content %>" - by <%= comment.user.username %></li>
+  <% end %>
+</p>
+
+<p>
+  <strong>Backpacker Contact Info:</strong>
+  <%= @picture.user.username %> |
+  <%= @picture.user.email %>
 </p>
 
 
