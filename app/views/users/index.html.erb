@@ -1,12 +1,16 @@
-<h1>You are home, <%= @user.username %>.</h1>
+<h1>Welcome Home, <%= @user.username %>.</h1>
 
 <ul>
 
 	<p><%= link_to "Pic Post Feed", pictures_path %> (see what the community is up to)</p>
 	<p><%= link_to "Get to Postin!", new_picture_path %></p>
 	
-	<% @user.pictures.each do |picture| %>
-		<img src= <%= picture.img_url %> width="500" height="350" ><br />
+	<% if @user.pictures %>
+		<% @user.pictures.each do |picture| %>
+			<img src= <%= picture.img_url %> width="500" height="350" ><br />
+		<% end %>
+	<% else %>
+		<%= "No pictures on your profile. Get movin!" %>
 	<% end %>
 
 	<%= link_to "Something Change? Update Info.", edit_user_path(@user) %><br />

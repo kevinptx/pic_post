@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   	def update
   		@user = User.update(user_params)
-    	redirect_to user_path(@user)
+    	redirect_to users_path
   	end
 
   	def destroy
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   	private
 
   	def user_params
-    	params.require(:user).permit(:username, :password, :password_confirmation, :email)
+    	params.require(:user).permit(:username, :email, :password, :password_confirmation)
   	end
 
 end
