@@ -1,5 +1,4 @@
 class PicturesController < ApplicationController
-
   before_action :define_current_picture, only: [:new, :edit, :show, :update]
 
   def index
@@ -22,18 +21,20 @@ class PicturesController < ApplicationController
     end
   end
 
+  #this is the get
   def edit
   end
 
+  #this is the post
   def update
-    @picture = Picture.update(picture_params)
+    @picture.update(picture_params)
     redirect_to picture_path(@picture)
   end
 
   private
 
   def define_current_picture
-    if(params[:id])
+    if (params[:id])
       @picture = Picture.find(params[:id])
     else
       @picture = Picture.new
@@ -43,5 +44,4 @@ class PicturesController < ApplicationController
   def picture_params
     params.require(:picture).permit(:img_url, :title, :user_id, tag_ids: [], tags_attributes: [:name], comment_ids: [], comments_attributes: [:content])
   end
-
 end

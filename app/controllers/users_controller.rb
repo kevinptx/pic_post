@@ -1,52 +1,59 @@
 class UsersController < ApplicationController
+  before_action :redirect_if_not_logged_in, only: [:index]
+  before_action :define_current_user, only: [:edit, :destroy]
+  before_action :define_current_session, only: [:index, :show]
 
-	before_action :redirect_if_not_logged_in, only: [:index]
+  def index
+  end
 
-	def index
-		@user = User.find(session[:user_id])
-	end
+  def show
+  end
 
-	def show
-		@user = User.find(session[:user_id])
-	end
+  def new
+    @user = User.new
+  end
 
-	def new
-		@user = User.new
-	end
+  def create
+    user = User.create(user_params)
 
-	def create
+    if !user.valid?
+      flash[:error] = user.errors.full_messages[0]
 
-    	user = User.create(user_params)
+      redirect_to signup_path
+    else
+      session[:user_id] = user.id
+      redirect_to users_path
+    end
+  end
 
-    	if !user.valid?
-      		flash[:error] = user.errors.full_messages[0]
+  def edit
+  end
 
-      		redirect_to signup_path
-   		else
-      		session[:user_id] = user.id
-      		redirect_to users_path
-    	end
-  	end
+  def update
+    @user = User.update(user_params)
+    redirect_to users_path
+  end
 
-  	def edit
-  		@user = User.find(params[:id])
-  	end
+  def destroy
+    @user.destroy
+    redirect_to pictures_path
+  end
 
-  	def update
-  		@user = User.update(user_params)
-    	redirect_to users_path
-  	end
+  private
 
-  	def destroy
+  def define_current_user
+    if (params[:id])
       @user = User.find(params[:id])
-  		@user.destroy
-  		redirect_to pictures_path
-  	end
+    else
+      @user = User.new
+    end
+  end
 
-  	private
+  def define_current_session
+    @user = User.find(session[:user_id])
+  end
 
-  	def user_params
-    	params.require(:user).permit(:username, :email, :password, :password_confirmation)
-  	end
-
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
 end
