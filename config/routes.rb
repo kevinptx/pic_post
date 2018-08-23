@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 		resources :comments
 	end
 
-	post 'recipes/:id', to: 'comments#create'
+	post 'pictures/:id', to: 'comments#create'
 	
 	resources :comments 
 	resources :users
