@@ -20,7 +20,7 @@
 <p>
   <strong>Comments:</strong>
   <% @picture.comments.map do |comment| %>
-  <li>"<%= comment.content %>" - by <%= link_to comment.user.username, @picture.user %></li>
+  <li>"<%= comment.content %>" - by <%= link_to comment.user.username, comment.user %></li>
   <% end %>
 </p>
 
