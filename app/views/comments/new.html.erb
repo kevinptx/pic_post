@@ -1,8 +1,8 @@
 <h1>Add Comment</h1>
 
 <%= form_with model: Comment.new do |form| %>
-	<div><% form.text_field :picture_id, value: @picture.id %></div>
-	<div><% form.text_field :user_id, value: session[:user_id] %></div>
+	<div id="divCheckbox" style="display: none;"><%= form.text_field :picture_id, value: @picture.id %></div>
+	<div id="divCheckbox" style="display: none;"><%= form.text_field :user_id, value: session[:user_id] %></div>
 	<div><%=form.text_area :content %></div>
 	<div><%=form.submit%></div>
 <% end %>
