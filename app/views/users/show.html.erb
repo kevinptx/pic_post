@@ -1,5 +1,4 @@
-<h1><%= @user.username %></h1>
-<h2>Travel Pics</h2>
+<h1>Pics by <%= @user.username %>!</h1>
 
 <% @user.pictures.each do |picture| %>
 	<p><%= picture.title %></p>
