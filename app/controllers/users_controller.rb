@@ -35,8 +35,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    session[:user_id] = nil
     @user.destroy
-    redirect_to pictures_path
+    redirect_to login_path
   end
 
   private

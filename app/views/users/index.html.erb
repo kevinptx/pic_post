@@ -1,19 +1,27 @@
-<h1>Welcome Home, <%= @user.username %>.</h1>
+<h1>Welcome To Your Homepage, <%= @user.username %></h1>
 
 <ul>
 
-	<p><%= link_to "Pic Post Feed", pictures_path %> (see what the community is up to)</p>
-	<p><%= link_to "Get to Postin!", new_picture_path %></p>
+	<p><%= link_to "Get to Postin! - Add New Pics.", new_picture_path %></p>
+	<p><%= link_to "Update Personal Info", edit_user_path(@user) %><br /></p>
+
+	<h4>Edit Your Photos Below:</h4>
 	
 	<% if @user.pictures %>
 		<% @user.pictures.each do |picture| %>
 			<img src= <%= picture.img_url %> width="500" height="350" ><br />
+			<%= link_to 'Edit Details', edit_picture_path(picture) %> | 
+        <%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %> <br />
 		<% end %>
 	<% else %>
 		<%= "No pictures on your profile. Get movin!" %>
 	<% end %>
+	<br />
+	<br />
+	<br />
+	<br />
 
-	<%= link_to "Something Change? Update Info.", edit_user_path(@user) %><br />
+	
 
 
 </ul>

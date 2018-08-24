@@ -7,7 +7,7 @@
 
 <p>
 <!--   <strong>Image: </strong> -->
-  <img src= <%= @picture.img_url %> width="500" height="350" ><br />
+  <img src= <%= @picture.img_url %> width="525" height="360" ><br />
 </p>
 
 <p>
@@ -20,7 +20,7 @@
 <p>
   <strong>Comments:</strong>
   <% @picture.comments.map do |comment| %>
-  <li>"<%= comment.content %>" - by <%= comment.user.username %></li>
+  <li>"<%= comment.content %>" - by <%= link_to comment.user.username, @picture.user %></li>
   <% end %>
 </p>
 
@@ -32,5 +32,4 @@
   <%= @picture.user.email %>
 </p>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
 <%= link_to 'Back', pictures_path %>
